@@ -9,30 +9,37 @@
 <body>
 
 <div class="calculadora">
-    <div class="opcao">
+        <div class="opcao">
         <h2>Valor mensal do plano semestral da Contratante:</h2>
     </div>
-        <div class="opcao">
+    <div class="opcao">
+        <label for="mensal">Mensal:</label>
+        <input type="number" id="mensal">
+    </div>
+    <div class="opcao">
+        <label for="trimestral">Trimestral:</label>
+        <input type="number" id="trimestral">
+    </div>
+    <div class="opcao">
+        <label for="semestral">Semestral:</label>
+        <input type="number" id="semestral">
+     </div>
+    <div class="opcao">
         <label for="anual">Anual:</label>
         <input type="number" id="anual">
     </div>
 
 
-    <div class="opcao">
-        <label for="semestral">Semestral:</label>
-        <input type="number" id="semestral">
-    </div>
 
 
-    <div class="opcao">
-        <label for="trimestral">Trimestral:</label>
-        <input type="number" id="trimestral">
-    </div>
 
-    <div class="opcao">
-        <label for="mensal">Mensal:</label>
-        <input type="number" id="mensal">
-    </div>
+
+
+
+
+
+
+
     <br>
     <div class="resultado-botao">
         <button type="button" onclick="calcularDiaria()">Calcular</button>
