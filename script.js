@@ -11,5 +11,6 @@ function calcularDiaria() {
         diaria = (parseFloat(document.getElementById('mensal').value) * 6 * 0.9) / 12;
     }
 
-    document.getElementById('resultado').innerHTML = 'A diária é: R$' + diaria.toFixed(2);
+     var formattedDiaria = roundedDiaria.toFixed(2).replace('.', ','); // Replaces dot with comma
+    document.getElementById('resultado').innerHTML = 'A diária é: R$' + formattedDiaria;
 }
