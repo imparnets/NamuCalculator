@@ -5,40 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Diária</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color:#E7FCFC ;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculadora {
+            max-width: 400px;
+            padding: 20px;
+            height: 280px;
+            border-radius: 10px;
+            background-color: #4DD7D8;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .opcao {
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            margin-right: 60px;
+            display: flex;
+            align-items: center;
+            margin: auto;
+        }
+        .opcao label {
+            width: 30%;
+            margin-right: 10px;
+            text-align: right;
+            color:white;
+            font-weight: bold;
+        }
+        h2 {
+            color: #FFFFFF; /* Cor branca */
+        }
+        .opcao input[type="number"] {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4D89E3;
+            color: #E5FBFC;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #FD6761;
+        }
+        #resultado {
+            margin-top: 20px;
+            color:white;
+            font-weight: bold;
+        }
+        .resultado-botao {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 
 <div class="calculadora">
-        <div class="opcao">
-        <h2>Valor mensal do plano semestral da Contratante:</h2>
+    <div class="opcao">
+        <h2>Valor total do plano:</h2>
     </div>
     <div class="opcao">
         <label for="mensal">Mensal:</label>
         <input type="number" id="mensal">
     </div>
     <div class="opcao">
-        <label for="trimestral">Trimestral:</label>
-        <input type="number" id="trimestral">
-    </div>
-    <div class="opcao">
         <label for="semestral">Semestral:</label>
         <input type="number" id="semestral">
-     </div>
+    </div>
     <div class="opcao">
         <label for="anual">Anual:</label>
         <input type="number" id="anual">
     </div>
-
-
-
-
-
-
-
-
-
-
-
 
     <br>
     <div class="resultado-botao">
@@ -47,6 +98,30 @@
     </div>
 </div>
 
-<script src="script.js"></script>
+<script>
+    function calcularDiaria() {
+        var diaria = 0;
+
+        if (document.getElementById('semestral').value !== '') {
+            diaria = (parseFloat(document.getElementById('semestral').value) * 0.9) / 14 / 6;
+        } else if (document.getElementById('anual').value !== '') {
+            diaria = (parseFloat(document.getElementById('anual').value) * 0.9) / 14 / 12;
+        }
+        
+        //anual como prioridade
+        if (document.getElementById('anual').value !== '') {
+            diaria = (parseFloat(document.getElementById('anual').value) * 0.9) / 14 / 12;
+        } else if (document.getElementById('semestral').value !== '') {
+            diaria = (parseFloat(document.getElementById('semestral').value) * 0.9) / 14 / 6;
+        } else if (document.getElementById('mensal').value !== ''){
+            diaria = (parseFloat(document.getElementById('mensal').value) * 0.9) / 14;
+        }
+
+        var formattedDiaria = diaria.toFixed(2).replace('.', ',');
+ 
+        document.getElementById('resultado').innerHTML = 'A diária é: R$' + formattedDiaria;
+    }
+</script>
+
 </body>
 </html>
